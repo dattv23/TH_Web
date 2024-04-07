@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace _2180608812_WebsiteBanHang.Controllers
+namespace _2180608812_WebsiteBanHang.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
     {
@@ -18,7 +19,6 @@ namespace _2180608812_WebsiteBanHang.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        [AllowAnonymous]
         // Hien thi danh sach san pham
         public async Task<IActionResult> Index()
         {
@@ -64,7 +64,6 @@ namespace _2180608812_WebsiteBanHang.Controllers
             return "/images/" + image.FileName;
         }
 
-        [AllowAnonymous]
         // Display a single product
         public async Task<IActionResult> Display(int id)
         {
@@ -102,7 +101,8 @@ namespace _2180608812_WebsiteBanHang.Controllers
                 if (imageUrl == null)
                 {
                     product.ImageUrl = existing.ImageUrl;
-                } else
+                }
+                else
                 {
                     product.ImageUrl = await SaveImage(imageUrl);
                 }
@@ -135,6 +135,5 @@ namespace _2180608812_WebsiteBanHang.Controllers
             await _productRepository.DeleteAsync(id);
             return RedirectToAction("Index");
         }
-
     }
 }

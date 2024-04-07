@@ -2,10 +2,10 @@
 using _2180608812_WebsiteBanHang.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace _2180608812_WebsiteBanHang.Controllers
+namespace _2180608812_WebsiteBanHang.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     [Authorize(Roles = SD.Role_Admin)]
     public class CategoryController : Controller
     {
@@ -18,7 +18,6 @@ namespace _2180608812_WebsiteBanHang.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        [AllowAnonymous]
         // Hien thi danh sach danh muc
         public async Task<IActionResult> Index()
         {
