@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/_2180608812_WebsiteBanHang.styles.css" asp-append-version="true" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+          rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -33,6 +36,11 @@
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
+                    <a asp-controller="ShoppingCart" asp-action="Index">
+                        <button class="btn btn-outline-dark">
+                            <i class="bi-cart-fill me-1"></i> Cart
+                        </button>
+                    </a>
                 </div>
             </div>
         </nav>

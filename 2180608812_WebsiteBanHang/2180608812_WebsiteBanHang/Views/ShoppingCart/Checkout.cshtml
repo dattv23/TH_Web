@@ -1,0 +1,67 @@
+﻿@model Order
+
+<head>
+    <style>
+        /* Form styling */
+        #checkout {
+            background-color: #fff; /* White background for the form */
+            padding: 20px;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow to lift the form from the page */
+            max-width: 600px; /* Limits form width and centers it */
+            margin: 40px auto; /* Centers form horizontally and adds vertical spacing */
+        }
+
+            #checkout .form-group {
+                margin-bottom: 20px; /* Adds bottom margin to form groups for spacing */
+            }
+
+        label {
+            font-weight: bold; /* Makes labels bold to differentiate from input text */
+            display: block; /* Ensures labels appear above inputs */
+            margin-bottom: 8px; /* Space below label */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%; /* Full width to fit parent container */
+            padding: 8px; /* Padding inside input for easier text entry */
+            border: 1px solid #ccc; /* Subtle border around inputs */
+            border-radius: 4px; /* Rounded borders for inputs */
+        }
+
+        textarea {
+            height: 100px; /* Sets a fixed height for textarea */
+        }
+
+        #btn-order {
+            background-color: #0056b3; /* Blue background for button */
+            color: #ffffff; /* White text for readability */
+            padding: 10px 20px; /* Padding inside button */
+            border: none; /* No border for a cleaner look */
+            border-radius: 4px; /* Rounded corners for the button */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Larger font size for better readability */
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
+        }
+
+            #btn-order:hover {
+                background-color: #004494; /* Slightly darker blue on hover */
+            }
+    </style>
+</head>
+
+<h2>Checkout</h2>
+<form id="checkout" asp-action="Checkout" method="post">
+    <div class="form-group">
+        <label asp-for="ShippingAddress">Shipping Address</label>
+        <input asp-for="ShippingAddress" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Notes">Notes</label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+    </div>
+    <button id="btn-order" type="submit" class="btn btn-primary">Place Order</button>
+</form>
+
